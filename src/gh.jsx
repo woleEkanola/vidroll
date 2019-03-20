@@ -4,7 +4,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 const BrowserWindow = require('electron').remote.BrowserWindow
 const path = require('path')
 
-class App extends React.Component {
+class GH extends React.Component {
 
 
   constructor(){
@@ -40,13 +40,10 @@ if(videoid != null) {
 
 
   const modalPath = path.join('file://', __dirname, './video.html')
-  var video = new BrowserWindow({ width: 400, height: 320, frame: false, show: false, alwaysOnTop: true, y: 100, x: 100, })
+  var video = new BrowserWindow({ width: 400, height: 320, frame: false, show: false, alwaysOnTop: true, y: 10, x: 10, })
   video.on('close', function () { win = null })
-  video.setAlwaysOnTop(true)
-
   video.loadURL(modalPath)
   video.once('ready-to-show', () => {
-    video.setAlwaysOnTop(true)
   video.show()
   ipcRenderer.send('videoID', videoID)
 })
@@ -63,38 +60,12 @@ if(videoid != null) {
   render() {
     return (
       <div>
-         <Container>
-       <Row>
-        <Col>
-      <h1> Vidroll </h1>
-   
-      <p >play a video while you work </p>
-      </Col>
-      </Row>
-      </Container>
+     Video
 
-      <Row className= 'bg'>
-         <Container>
-<Row className='mask' >
-      <Col className='fuulWidth' >
-      <h3>Play from YouTube</h3>
-      <p>Once you copy the video link it will appear below</p>
-      <input type="text" placeholder='Video Link' value= {this.state.youtube}/>
-      <button onClick= {this.playVideo.bind(this)}>Play Video</button>
-      </Col>
-      <Col>
-      <h3>Play a Local file</h3>
-      <p>Drag and Drop the video here</p>
-      <Button color='primary' >Play Video</Button>
-      </Col>
-      </Row>
-
-            </Container>
-
-      </Row>
+       
       </div>
     );
   }
 }
 
-export default App;
+export default GH;

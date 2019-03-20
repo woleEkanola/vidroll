@@ -1,6 +1,9 @@
 import { ipcRenderer } from 'electron';
 import React, { Component } from 'react';
 import YouTube from 'react-youtube'
+import { Container, Row, Col } from 'reactstrap';
+
+
 
 
 export default class Video extends Component {
@@ -34,14 +37,19 @@ console.log(that.state.videoId)
     };
 
     return (
-        <div >
+        <Container >
+          <Row>
+          <Col>
           <div className="tips">x</div>
+
       <YouTube
-      videoId= 'HRBpG553PAE'  
+      videoId= '92J-3ajM0dI'  
         opts={opts}
         onReady={this._onReady}
       />
-      </div>
+        </Col>
+      </Row>
+      </Container>
     );
   }
 
